@@ -1,0 +1,25 @@
+0 -- FIXED ATTRIBUTES
+
+
+1)-- OVER WRITE THE OLD VALUES 
+           update oldtable set o.address=n.address,
+                               o.phoneno=n.phoneno,
+                               o.name=n.name 
+form oldtable o join newtable as n
+on o.no=n.no
+----
+2) HISTORICAL ATTRIBUTES
+insert into oldtale select * form newtable as N join oldtable  as o
+ on (o.id=n.id) and 
+
+                     (  o.address<>n.address and 
+                        o.phoneno<>n.phoneno and 
+                        o.name<>n.name )
+
+
+--------------------------or---------------
+  on (o.id=n.id) and 
+                             ( o.address<>n.address or
+                              o.phoneno<>n.phoneno or
+
+                               o.name<>n.name) 
